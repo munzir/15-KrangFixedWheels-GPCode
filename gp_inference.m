@@ -1,50 +1,50 @@
 % clear all;
-num_training_samples = 1000;
-num_test_samples = 1000;
-offset = 100;
-dir = 'all_data/Data_HighDeg/';
+num_training_samples = 100;
+num_test_samples = 100;
+offset = 0;
+dir = 'all_data/data4/';
 
 disp('here')
 
-time = tdfread(strcat(dir,'dataTime.txt'));
+time = tdfread(strcat(dir,'DataTime.txt'));
 t = time.dataTime;
-% M = tdfread(strcat(dir,'dataM.txt'), 'tab');
-% M = M.dataM;
-% 
-% disp('here')
-% Cg = tdfread(strcat(dir,'dataCg.txt'), 'tab');
-% Cg = Cg.dataCg;
-% 
-% torque_data = tdfread(strcat(dir,'dataTorque.txt'), '\t');
-% torque_data = torque_data.dataTorque;
-% 
-% q_data = tdfread(strcat(dir,'dataQ.txt'), '\t');
-% q_data = q_data.dataQ;
-% size(q_data)
-% 
-% disp('here')
-% dq_data = tdfread(strcat(dir,'dataQdot.txt'), '\t');
-% dq_data = dq_data.dataQdot;
-% 
-% ddq_data = tdfread(strcat(dir, 'dataQdotdot.txt'), '\t');
-% ddq_data = ddq_data.dataQdotdot;
-% 
-% % size('here')
-% training_q = q_data(1+offset:offset + num_training_samples,:);
-% test_q = q_data(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
-% 
-% training_dq = dq_data(1+offset:offset + num_training_samples,:);
-% test_dq = dq_data(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
-% 
-% training_ddq = ddq_data(1+offset: offset + num_training_samples,:);
-% test_ddq = ddq_data(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
-% 
-% training_torque = torque_data(1+offset: offset + num_training_samples,:);
-% test_torque = torque_data(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
-% 
-% t_train = t(1+offset:offset + num_training_samples,:);
-% t_test = t(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
-% 
+M = tdfread(strcat(dir,'DataM.txt'), 'tab');
+M = M.dataM;
+
+disp('here')
+Cg = tdfread(strcat(dir,'DataCg.txt'), 'tab');
+Cg = Cg.dataCg;
+
+torque_data = tdfread(strcat(dir,'DataTorque.txt'), '\t');
+torque_data = torque_data.dataTorque;
+
+q_data = tdfread(strcat(dir,'DataQ.txt'), '\t');
+q_data = q_data.dataQ;
+size(q_data)
+
+disp('here')
+dq_data = tdfread(strcat(dir,'DatadQ.txt'), '\t');
+dq_data = dq_data.dataQdot;
+
+ddq_data = tdfread(strcat(dir, 'dataQdotdot.txt'), '\t');
+ddq_data = ddq_data.dataQdotdot;
+
+% size('here')
+training_q = q_data(1+offset:offset + num_training_samples,:);
+test_q = q_data(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
+
+training_dq = dq_data(1+offset:offset + num_training_samples,:);
+test_dq = dq_data(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
+
+training_ddq = ddq_data(1+offset: offset + num_training_samples,:);
+test_ddq = ddq_data(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
+
+training_torque = torque_data(1+offset: offset + num_training_samples,:);
+test_torque = torque_data(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
+
+t_train = t(1+offset:offset + num_training_samples,:);
+t_test = t(offset + num_training_samples+1:offset + num_training_samples+num_test_samples,:);
+
 disp('here')
 training_PHI_BETA_mean = zeros(num_training_samples,18);
 training_trajectories = zeros(num_training_samples,54);
